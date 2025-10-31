@@ -17,9 +17,10 @@ class Artwork {
     - id : Long
     - title : String
     - description : String
-    - type : String
     - imageUrl : String
     - price : double
+    - stock : int
+    - category : String
 }
 
 class Detail {
@@ -30,7 +31,6 @@ class Detail {
 
 class ShoppingCart {
     - id : Long
-    - totalPrice : double
 }
 
 User "1" -- "0...*" Artwork : creates >
