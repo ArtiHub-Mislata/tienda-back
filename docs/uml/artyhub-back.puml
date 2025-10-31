@@ -20,7 +20,12 @@ class Artwork {
     - imageUrl : String
     - price : double
     - stock : int
-    - category : String
+    - category : Category
+}
+
+class Category {
+    - id : Long
+    - name : String
 }
 
 class Detail {
@@ -31,13 +36,23 @@ class Detail {
 
 class ShoppingCart {
     - id : Long
+    - payMethod : PayMethod
 }
 
-User "1" -- "0...*" Artwork : creates >
-User "1" -- "0...1" ShoppingCart : owns >
-ShoppingCart "1" -- "1...*" Detail : has >
-Detail "1" -- "1...*" Artwork : contains >
-User "1" -- "0...*" Artwork : purchase >
+class PayMethod {
+    - id : Long
+    - nTarget : String
+    - dateExpiration : String
+    - cvv : String
+}
 
+User -- "*" Artwork
+User -- "0...1" ShoppingCart
+ShoppingCart -- "*" Detail
+Detail -- "*" Artwork
+User -- "*" Artwork
+ShoppingCart -- PayMethod
+User -- "*" PayMethod
+Artwork "*" -- Category
 
 @enduml
