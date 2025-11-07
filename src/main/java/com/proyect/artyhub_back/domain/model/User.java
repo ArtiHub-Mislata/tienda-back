@@ -1,11 +1,22 @@
 package com.proyect.artyhub_back.domain.model;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
 public class User {
+    // En caso de no tener DTO, aqui hariamos la validación de datos de entrada
+    //
+    // @NotNull(message = "El id es obligatorio")
     private Long id;
+    // @NotNull(message = "El nombre es obligatorio")
     private String name;
+    // @NotNull(message = "El email es obligatorio")
     private String email;
+    // @NotNull(message = "La contraseña es obligatoria")
     private String password;
+    // @Size (min = 24, max = 24)
     private String nAccount;
+    // @Size (max=250)
     private String description;
     private String address;
     private String imageProfileUrl;
@@ -19,7 +30,10 @@ public class User {
         this.description = description;
         this.address = address;
         this.imageProfileUrl = imageProfileUrl;
+        // this.setAddress("yfyf"); Si no tuvieramos JakartaValidation, tendriamos que poner el this.set_xxx
     }
+
+    // Si no tuvieramos JakartaValidation, las validaciones se hacen en el setter
 
     public Long getId() {
         return id;
